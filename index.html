@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>B7 STORE</title>
+  <style>
+    :root {
+      --bg: #f7f8fa;
+      --card: #ffffff;
+      --accent: #B4EEB4;
+      --text: #333;
+      --subtext: #555;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg, var(--bg), #eef6f0);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 24px;
+    }
+
+    .wrap {
+      max-width: 980px;
+      width: 100%;
+      background: var(--card);
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(20,20,20,0.06);
+      overflow: hidden;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 18px 22px;
+    }
+
+    .logo {
+      width: 60px;
+      height: 60px;
+      border-radius: 12px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 20px;
+      color: var(--text);
+    }
+
+    header p.sub {
+      margin: 4px 0 0;
+      color: var(--subtext);
+      font-size: 14px;
+    }
+
+    .player {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%; /* 16:9 ratio */
+      background: #000;
+    }
+
+    .player video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      border-radius: 8px;
+    }
+
+    .meta {
+      padding: 16px 22px 28px;
+      color: var(--text);
+    }
+
+    .meta .desc {
+      margin: 8px 0 0;
+      color: var(--subtext);
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    .actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .btn {
+      padding: 8px 12px;
+      border-radius: 8px;
+      border: 1px solid rgba(0,0,0,0.06);
+      background: #fff;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .btn:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #084;
+    }
+
+    @media (max-width:640px){
+      header h1 { font-size: 18px; }
+      header p.sub { font-size: 13px; }
+    }
+
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header>
+      <div class="logo">
+        <img src="foto.jpg" alt="Logo">
+      </div>
+      <div>
+        <h1>B7 STORE</h1>
+        <p class="sub">Clique para assistir ao vídeo — sem expirar.</p>
+      </div>
+    </header>
+
+    <section class="player">
+      <video id="videoFrame" controls playsinline>
+        <source src="video.mp4" type="video/mp4">
+        Seu navegador não suporta o elemento de vídeo.
+      </video>
+    </section>
+
+    <section class="meta">
+      <p class="desc">Passo a passo de como realizar recargas e compras no BOT do B7.</p>
+
+      <div class="actions">
+        <button class="btn" onclick="copyLink()">Copiar link desta página</button>
+        <button class="btn" onclick="openInNew()">Abrir em nova aba</button>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    function copyLink(){
+      navigator.clipboard.writeText(location.href).then(()=>alert('Link copiado!'))
+      .catch(()=>alert('Não foi possível copiar. Copie manualmente a URL.'))
+    }
+
+    function openInNew(){ window.open(location.href,'_blank') }
+  </script>
+</body>
+</html>
